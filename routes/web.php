@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController; 
+use App\Http\Controllers\TestRequestController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,3 +38,9 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticat
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+// GET 요청을 위한 뷰 표시 라우트
+Route::get('/request-test', [TestRequestController::class, 'create'])->name('request.create');
+
+// POST 요청을 처리할 라우트
+Route::post('/request-test', [TestRequestController::class, 'store'])->name('request.store');
