@@ -20,8 +20,10 @@ return new class extends Migration
 
             // publishers 테이블의 id를 참조하는 외래 키
             $table->foreignId('publisher_id')->constrained('publishers');
-
+            
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 
