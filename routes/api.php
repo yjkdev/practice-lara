@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\PublisherController;
 
 // 임시로 다른 리소스를 위한 더미 라우트 추가 (링크 생성을 위해)
 Route::get('/users/{user}', function () {})->name('api.users.show');
@@ -18,3 +19,5 @@ Route::get('/profile', function (Request $request) {
       'app_version' => $request->header('X-App-Version'),
   ]);
 })->middleware('ensure.version:1.2.0'); // 별칭을 사용하여 미들웨어 적용
+
+Route::post('/publishers', [PublisherController::class, 'store']);
