@@ -21,3 +21,8 @@ Route::get('/profile', function (Request $request) {
 })->middleware('ensure.version:1.2.0'); // 별칭을 사용하여 미들웨어 적용
 
 Route::post('/publishers', [PublisherController::class, 'store']);
+
+//6-2
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+  return $request->user();
+});
