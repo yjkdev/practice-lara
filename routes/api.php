@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\Api\AuthController;
 
 // 임시로 다른 리소스를 위한 더미 라우트 추가 (링크 생성을 위해)
 Route::get('/users/{user}', function () {})->name('api.users.show');
@@ -22,7 +23,18 @@ Route::get('/profile', function (Request $request) {
 
 Route::post('/publishers', [PublisherController::class, 'store']);
 
-//6-2
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+// 6-2
+/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
+}); */
+
+// 6-3
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
 });
