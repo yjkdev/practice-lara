@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'jwt', // 경비원의 종류 jwt
+            'provider' => 'users',
+        ],
     ],
 
     /*
