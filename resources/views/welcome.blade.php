@@ -37,7 +37,14 @@
                         >
                             Log in
                         </a>
-
+                        
+                        <a
+                            href="/auth/github/redirect"
+                            class="inline-block px-5 py-1.5 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                        >
+                            Login with GitHub
+                        </a>
+                        
                         @if (Route::has('register'))
                             <a
                                 href="{{ route('register') }}"
