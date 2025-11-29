@@ -22,3 +22,9 @@ require __DIR__.'/auth.php';
 
 Route::get('/auth/github/redirect', [GithubAuthController::class, 'redirect']);
 Route::get('/auth/github/callback', [GithubAuthController::class, 'callback']);
+
+
+// 6-5
+Route::get('/admin', function () {
+    return '관리자 대시보드';
+})->middleware('can:view-admin-dashboard');
