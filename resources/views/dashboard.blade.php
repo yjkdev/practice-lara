@@ -1,3 +1,7 @@
+@can('view-admin-dashboard')
+    <a href="/admin">관리자 페이지로 이동</a>
+@endcan
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
